@@ -21,4 +21,5 @@ export class TaskListComponent {
   editButtonClicked(taskToEdit: Task) {
     this.clickSender.emit(taskToEdit);
   }
+  filterByCompleteness: string = "incompleteTasks";
 }
