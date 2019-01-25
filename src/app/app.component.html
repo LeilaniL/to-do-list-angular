@@ -3,12 +3,8 @@
   <input [(ngModel)]="userName" type="text" name="user">
 </form>
 
-
-<ul>
-  <li [class]="priorityColor(currentTask)" *ngFor="let currentTask of tasks">{{currentTask.description}}<button (click)="editTask(currentTask)">Edit!</button></li>
-</ul>
 <h3>{{currentFocus}}</h3>
-
+<app-task-list [childTaskList]="masterTaskList" (clickSender)="editTask($event)"></app-task-list>
 <div *ngIf="selectedTask">
   <h3>{{selectedTask.Description}}</h3>
   <p>Task complete? {{selectedTask.done}} </p>
@@ -23,3 +19,5 @@
   <input type="radio" [(ngModel)]="selectedTask.priority" value="3">3 (High priority)
   <button class="foo-button mdc-button" (click)="finishedEditing()">Done</button>
 </div>
+<app-edit-task [childSelectedTask]="selectedTask" (clickedDone)="finishedEditing"></app-edit-task>
+<app-new-task (sendTask)="addTask($event)"></app-new-task>
