@@ -21,5 +21,11 @@ export class TaskListComponent {
   editButtonClicked(taskToEdit: Task) {
     this.clickSender.emit(taskToEdit);
   }
+  toggleDone(clickedTask: Task, setCompleteness: boolean) {
+    clickedTask.done = setCompleteness;
+  }
   filterByCompleteness: string = "incompleteTasks";
+  onChange(optionFromMenu) {
+    this.filterByCompleteness = optionFromMenu;
+  }
 }
